@@ -84,7 +84,7 @@ The contract is `openapi.json` in the repository root: `GET /oceanic-tracks/trac
 
 ```shell
 curl -H "X-Require-Whisk-Auth: $SECRET" \
-  "https://<app-host>/oceanic-tracks/oceanic-tracks/tracks"
+  "https://<app-host>/oceanic-tracks-provider/oceanic-tracks/tracks"
 ```
 
 The function takes no arguments and answers with every track currently published:

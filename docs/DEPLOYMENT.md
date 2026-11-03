@@ -10,7 +10,7 @@ The function is a functions component of the `mypreflight` App Platform app, bui
    openssl rand -hex 32
    ```
 
-2. Merge `.do/app.component.yaml` into the app spec. Put its ingress rule ahead of the catch-all `/` rules already there, because App Platform matches rules in order.
+2. Merge `.do/app.component.yaml` into the app spec, next to the other provider functions. Its ingress rule routes `/oceanic-tracks-provider` to the component, the same way the other functions are routed by their component names.
 
    ```shell
    doctl apps spec get <app-id> > app.yaml
@@ -18,7 +18,7 @@ The function is a functions component of the `mypreflight` App Platform app, bui
    doctl apps update <app-id> --spec app.yaml
    ```
 
-3. Set the component's environment in the App Platform console, all at run time:
+3. Set the component's environment in the App Platform console, every variable at run and build time. `project.yml` reads them while App Platform builds the function, so a run-time-only variable reaches the build empty, and an empty `webSecure` leaves the function unguarded:
 
    | Variable | Value | Encrypted |
    | --- | --- | --- |
@@ -33,13 +33,13 @@ The function is a functions component of the `mypreflight` App Platform app, bui
 
    | Variable | Value |
    | --- | --- |
-   | `OCEANIC_TRACKS_FUNCTION_BASE_URL` | `https://<app-host>/oceanic-tracks/oceanic-tracks` |
+   | `OCEANIC_TRACKS_FUNCTION_BASE_URL` | `https://<app-host>/oceanic-tracks-provider/oceanic-tracks` |
    | `OCEANIC_TRACKS_FUNCTION_SECRET` | The secret from step 1 |
 
 5. Check the function answers:
 
    ```shell
-   curl -H "X-Require-Whisk-Auth: $SECRET" "https://<app-host>/oceanic-tracks/oceanic-tracks/tracks"
+   curl -H "X-Require-Whisk-Auth: $SECRET" "https://<app-host>/oceanic-tracks-provider/oceanic-tracks/tracks"
    ```
 
    A `502` with `NMS_UNAVAILABLE` means the FAA refused the key or the host does not match it. The function log names the status the FAA answered.
