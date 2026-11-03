@@ -1,4 +1,4 @@
-import type { ParsedTrack } from "../types";
+import type { ParsedTrack } from "../track";
 
 const TRACK_HEADER = /^TRACK\s+([A-Z0-9]+)\.?$/;
 

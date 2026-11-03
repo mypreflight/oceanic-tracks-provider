@@ -11,6 +11,22 @@ export type TrackFix = Coordinates & {
   ident: string;
 };
 
+export type ParsedTrack = {
+  identifier: string;
+  route: string[];
+  remarks: string | null;
+};
+
+export type PublishedTrack = ParsedTrack & {
+  system: TrackSystem;
+  direction: TrackDirection;
+  issuingAuthority: string;
+  notamNumber: string;
+  validFrom: string;
+  validTo: string;
+  message: string;
+};
+
 export type OceanicTrack = {
   system: TrackSystem;
   identifier: string;
@@ -33,16 +49,10 @@ export type TrackSet = {
   unreadableMessages: string[];
 };
 
-export type NmsNotam = {
-  number: string;
-  type: string;
-  validFrom: string;
-  validTo: string;
-  text: string;
-};
-
-export type ParsedTrack = {
-  identifier: string;
-  route: string[];
-  remarks: string | null;
-};
+export function compareTracks(a: OceanicTrack, b: OceanicTrack): number {
+  return (
+    a.issuingAuthority.localeCompare(b.issuingAuthority) ||
+    a.identifier.localeCompare(b.identifier, "en", { numeric: true }) ||
+    a.validFrom.localeCompare(b.validFrom)
+  );
+}

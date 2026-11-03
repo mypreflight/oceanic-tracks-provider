@@ -1,4 +1,4 @@
-import type { ParsedTrack } from "../types";
+import type { ParsedTrack } from "../track";
 
 const HEADER = /^TDM TRK ([A-Z0-9]+) \d{12} \d{10} \d{10} (.+)$/;
 

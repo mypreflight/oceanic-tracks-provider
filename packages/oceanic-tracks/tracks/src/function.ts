@@ -1,10 +1,10 @@
-import { NmsNotConfiguredError } from "./errors";
-import { FixDirectoryClient } from "./fix-directory.client";
-import { handleRequest } from "./handler";
-import { Logger } from "./logger";
-import { NmsClient } from "./nms.client";
-import { PacotsSource } from "./pacots.source";
-import { OceanicTracksService } from "./tracks.service";
+import { TrackSourceNotConfiguredError } from "./application/errors";
+import { ListCurrentTracks } from "./application/list-current-tracks";
+import { PacotsMessages } from "./application/pacots-messages";
+import { FixDirectoryClient } from "./infra/fix-directory/fix-directory.client";
+import { handleRequest } from "./infra/http/handler";
+import { NmsClient } from "./infra/nms/nms.client";
+import { Logger } from "./shared/logger";
 
 const DEFAULT_NMS_HOST = "https://api-nms.aim.faa.gov";
 
@@ -14,34 +14,34 @@ const DEFAULT_USER_AGENT = "MyPreflight/1.0 (+https://mypreflight.io)";
 
 const logger = new Logger("TracksFunction");
 
-let service: OceanicTracksService | undefined;
+let useCase: ListCurrentTracks | undefined;
 
-function resolveService(): OceanicTracksService {
-  if (!service) {
+function resolveUseCase(): ListCurrentTracks {
+  if (!useCase) {
     const clientId = process.env.NMS_CLIENT_ID;
     const clientSecret = process.env.NMS_CLIENT_SECRET;
 
     if (!clientId || !clientSecret) {
-      throw new NmsNotConfiguredError();
+      throw new TrackSourceNotConfiguredError();
     }
 
     const nmsHost = process.env.NMS_API_HOST || DEFAULT_NMS_HOST;
     const fixDirectoryHost = process.env.FIX_DIRECTORY_HOST || DEFAULT_FIX_DIRECTORY_HOST;
     const userAgent = process.env.OCEANIC_TRACKS_USER_AGENT || DEFAULT_USER_AGENT;
 
-    service = new OceanicTracksService(
-      new PacotsSource(new NmsClient({ host: nmsHost, clientId, clientSecret, userAgent })),
+    useCase = new ListCurrentTracks(
+      new PacotsMessages(new NmsClient({ host: nmsHost, clientId, clientSecret, userAgent })),
       new FixDirectoryClient({ host: fixDirectoryHost, userAgent }),
     );
 
     logger.log(`Cold start. Reading NOTAMs from ${nmsHost} and fixes from ${fixDirectoryHost}.`);
   }
 
-  return service;
+  return useCase;
 }
 
-export function resetService(): void {
-  service = undefined;
+export function resetUseCase(): void {
+  useCase = undefined;
 }
 
 export async function main(): Promise<{
@@ -49,7 +49,7 @@ export async function main(): Promise<{
   headers: Record<string, string>;
   body: unknown;
 }> {
-  const { statusCode, body } = await handleRequest(resolveService);
+  const { statusCode, body } = await handleRequest(resolveUseCase);
 
   return {
     statusCode,

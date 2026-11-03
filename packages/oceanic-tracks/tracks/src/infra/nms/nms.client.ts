@@ -1,7 +1,7 @@
-import { NmsUnavailableError } from "./errors";
-import { delay, fetchWithRetry } from "./http";
-import { describeError, Logger } from "./logger";
-import type { NmsNotam } from "./types";
+import { TrackSourceUnavailableError } from "../../application/errors";
+import type { TrackMessage, TrackMessageSource } from "../../application/port/track-message-source";
+import { describeError, Logger } from "../../shared/logger";
+import { delay, fetchWithRetry } from "../http/fetch-with-retry";
 
 const REQUEST_SPACING_MS = 1_100;
 
@@ -41,7 +41,7 @@ type NotamsResponse = {
   data?: { geojson?: NmsFeature[] };
 };
 
-export class NmsClient {
+export class NmsClient implements TrackMessageSource {
   private readonly logger = new Logger(NmsClient.name);
   private readonly host: string;
   private token: { value: string; expiresAt: number } | null = null;
@@ -51,8 +51,8 @@ export class NmsClient {
     this.host = options.host.replace(/\/+$/, "");
   }
 
-  async findNotams(location: string, freeText: string): Promise<NmsNotam[]> {
-    const query = new URLSearchParams({ location, freeText }).toString();
+  async find(location: string, keyword: string): Promise<TrackMessage[]> {
+    const query = new URLSearchParams({ location, freeText: keyword }).toString();
     const url = `${this.host}/nmsapi/v1/notams?${query}`;
     let response = await this.requestNotams(url, await this.accessToken());
 
@@ -72,7 +72,7 @@ export class NmsClient {
       const reason = response.status === 429 ? "rate limited the request" : `answered ${response.status}`;
       this.logger.warn(`The NOTAM service ${reason} for ${location}.`);
 
-      throw new NmsUnavailableError();
+      throw new TrackSourceUnavailableError();
     }
 
     const notams = (body.data?.geojson ?? []).flatMap((feature) => {
@@ -93,7 +93,7 @@ export class NmsClient {
       ];
     });
 
-    this.logger.debug(`Read ${notams.length} NOTAMs for ${location} matching "${freeText}".`);
+    this.logger.debug(`Read ${notams.length} NOTAMs for ${location} matching "${keyword}".`);
 
     return notams;
   }
@@ -113,7 +113,7 @@ export class NmsClient {
         },
       },
       this.logger,
-      () => new NmsUnavailableError(),
+      () => new TrackSourceUnavailableError(),
     );
   }
 
@@ -136,7 +136,7 @@ export class NmsClient {
         body: "grant_type=client_credentials",
       },
       this.logger,
-      () => new NmsUnavailableError(),
+      () => new TrackSourceUnavailableError(),
     );
     const body = (await response.json().catch((error: unknown) => {
       this.logger.warn(`Could not read the token response: ${describeError(error)}`);
@@ -147,7 +147,7 @@ export class NmsClient {
     if (!response.ok || !body?.access_token) {
       this.logger.warn(`The NOTAM service refused a token with ${response.status} ${body?.ErrorCode ?? "unknown"}.`);
 
-      throw new NmsUnavailableError();
+      throw new TrackSourceUnavailableError();
     }
 
     const lifetimeS = Number(body.expires_in ?? DEFAULT_TOKEN_LIFETIME_S);

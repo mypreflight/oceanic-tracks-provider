@@ -1,7 +1,7 @@
 import { Then, When } from "@cucumber/cucumber";
 import expect from "expect";
+import type { OceanicTrack, TrackSet } from "../../src/domain/track";
 import { main } from "../../src/function";
-import type { OceanicTrack, TrackSet } from "../../src/types";
 import { deepCompare } from "../_helper/deep-compare";
 
 let statusCode: number;

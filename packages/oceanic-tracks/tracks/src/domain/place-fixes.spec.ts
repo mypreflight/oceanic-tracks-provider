@@ -1,4 +1,4 @@
-import { namedIdents, placeFixes } from "./place-fixes";
+import { namedIdents, placeFixes, placeTrack } from "./place-fixes";
 
 const BOXER_OFFSHORE = { latitude: 42.716667, longitude: -126.18 };
 
@@ -73,5 +73,41 @@ describe("placeFixes", () => {
 describe("namedIdents", () => {
   it("lists only the fixes the directory has to place", () => {
     expect(namedIdents(["BOXER", "52N140W", "R591", "SYA"])).toEqual(["BOXER", "SYA"]);
+  });
+});
+
+describe("placeTrack", () => {
+  it("turns a published track into one with its fixes placed", () => {
+    const published = {
+      system: "pacots" as const,
+      identifier: "A",
+      direction: "west" as const,
+      issuingAuthority: "KZAK",
+      notamNumber: "A5313/26",
+      validFrom: "2026-11-03T19:00:00.000Z",
+      validTo: "2026-11-04T08:00:00.000Z",
+      route: ["PUPPI", "23N170W", "TONIK"],
+      remarks: "TRK B NOT AVAILABLE",
+      message: "(TDM TRK A ...)",
+    };
+
+    expect(placeTrack(published, new Map([["PUPPI", [{ latitude: 21.921383, longitude: -161.679633 }]]]))).toEqual({
+      system: "pacots",
+      identifier: "A",
+      direction: "west",
+      issuingAuthority: "KZAK",
+      notamNumber: "A5313/26",
+      validFrom: "2026-11-03T19:00:00.000Z",
+      validTo: "2026-11-04T08:00:00.000Z",
+      route: "PUPPI 23N170W TONIK",
+      levels: [],
+      fixes: [
+        { ident: "PUPPI", latitude: 21.921383, longitude: -161.679633 },
+        { ident: "23N170W", latitude: 23, longitude: -170 },
+      ],
+      unresolvedFixes: ["TONIK"],
+      remarks: "TRK B NOT AVAILABLE",
+      message: "(TDM TRK A ...)",
+    });
   });
 });

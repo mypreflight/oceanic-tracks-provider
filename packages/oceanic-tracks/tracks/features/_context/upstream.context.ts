@@ -1,6 +1,6 @@
 import { After, AfterAll, Before, Given, Then } from "@cucumber/cucumber";
 import expect from "expect";
-import { resetService } from "../../src/function";
+import { resetUseCase } from "../../src/function";
 import { callsTo, requestsTo, reset, restoreFixtures, expect as stub } from "../_helper/mockserver";
 import {
   fixture,
@@ -21,7 +21,7 @@ let savedCredentials: Partial<Record<(typeof CREDENTIALS)[number], string>> = {}
 
 Before(async () => {
   await reset();
-  resetService();
+  resetUseCase();
   savedCredentials = Object.fromEntries(CREDENTIALS.map((name) => [name, process.env[name]]));
 });
 

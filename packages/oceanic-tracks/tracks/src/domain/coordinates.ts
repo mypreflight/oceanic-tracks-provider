@@ -1,8 +1,6 @@
-import type { Coordinates } from "../types";
+import type { Coordinates } from "./track";
 
 const LAT_LON_POINT = /^(\d{2})(\d{2})?([NS])(\d{3})(\d{2})?([EW])$/;
-
-const DMS = /^(\d{1,3})-(\d{1,2})-(\d{1,2}(?:\.\d+)?)([NSEW])$/;
 
 const NAMED_FIX = /^[A-Z]{2,5}$/;
 
@@ -36,24 +34,6 @@ export function parseLatLonPoint(token: string): Coordinates | null {
   }
 
   return { latitude: round(latitude), longitude: round(longitude) };
-}
-
-export function parseDms(value: string): number | null {
-  const match = DMS.exec(value.trim());
-
-  if (!match) {
-    return null;
-  }
-
-  const [, degrees, minutes, seconds, hemisphere] = match;
-  const magnitude = Number(degrees) + Number(minutes) / 60 + Number(seconds) / 3600;
-  const limit = hemisphere === "N" || hemisphere === "S" ? 90 : 180;
-
-  if (magnitude > limit || Number(minutes) >= 60 || Number(seconds) >= 60) {
-    return null;
-  }
-
-  return round(hemisphere === "S" || hemisphere === "W" ? -magnitude : magnitude);
 }
 
 export function classifyToken(token: string): RouteToken {

@@ -1,9 +1,11 @@
-import { FixDirectoryUnavailableError } from "./errors";
-import { fetchWithRetry } from "./http";
-import { Logger } from "./logger";
-import { distanceNm, parseDms } from "./parser/coordinates";
-import type { FixCandidates } from "./place-fixes";
-import type { Coordinates } from "./types";
+import { FixDirectoryUnavailableError } from "../../application/errors";
+import type { FixDirectory } from "../../application/port/fix-directory";
+import { distanceNm } from "../../domain/coordinates";
+import type { FixCandidates } from "../../domain/place-fixes";
+import type { Coordinates } from "../../domain/track";
+import { Logger } from "../../shared/logger";
+import { fetchWithRetry } from "../http/fetch-with-retry";
+import { parseDms } from "./dms";
 
 const CACHE_TTL_MS = 86_400_000;
 
@@ -36,7 +38,7 @@ export type FixDirectoryClientOptions = {
   userAgent: string;
 };
 
-export class FixDirectoryClient {
+export class FixDirectoryClient implements FixDirectory {
   private readonly logger = new Logger(FixDirectoryClient.name);
   private readonly host: string;
   private readonly cache = new Map<string, { candidates: Coordinates[]; expiresAt: number }>();

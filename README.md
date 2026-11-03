@@ -117,6 +117,20 @@ Errors answer `{ "error": { "code", "message", "status" } }` with a matching sta
 or fix directory is unreachable or refuses the request, `500` when the FAA credentials are missing or anything else
 fails.
 
+### Code layout
+
+The function is split into three layers under `packages/oceanic-tracks/tracks/src`, with dependencies pointing inwards
+only:
+
+| Layer | Holds |
+| --- | --- |
+| `domain` | The track model, coordinates, the Oakland and Fukuoka message parsers, fix placement. No I/O. |
+| `application` | The list-current-tracks use case and its cache, the PACOTS issuers, the `TrackMessageSource` and `FixDirectory` ports, and its errors. |
+| `infra` | The FAA NOTAM service and fix directory clients implementing the ports, and the HTTP handler that turns errors into statuses and codes. |
+
+`shared` holds the logger and `function.ts` wires the layers together. `architecture.spec.ts` fails the unit tests when
+a layer imports one it shouldn't.
+
 ### Where the fix positions come from
 
 The FAA publishes its aeronautical data through public map services. The function asks three layers at once and

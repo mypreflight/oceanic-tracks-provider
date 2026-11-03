@@ -1,4 +1,4 @@
-import { describeError, type Logger } from "./logger";
+import { describeError, type Logger } from "../../shared/logger";
 
 const TIMEOUT_MS = 30_000;
 

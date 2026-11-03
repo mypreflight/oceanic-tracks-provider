@@ -1,5 +1,5 @@
-import { classifyToken, distanceNm, type RouteToken } from "./parser/coordinates";
-import type { Coordinates, TrackFix } from "./types";
+import { classifyToken, distanceNm, type RouteToken } from "./coordinates";
+import type { Coordinates, OceanicTrack, PublishedTrack, TrackFix } from "./track";
 
 export type FixCandidates = Map<string, Coordinates[]>;
 
@@ -82,4 +82,24 @@ export function placeFixes(route: string[], candidates: FixCandidates): PlacedRo
   });
 
   return { fixes, unresolvedFixes };
+}
+
+export function placeTrack(track: PublishedTrack, candidates: FixCandidates): OceanicTrack {
+  const { fixes, unresolvedFixes } = placeFixes(track.route, candidates);
+
+  return {
+    system: track.system,
+    identifier: track.identifier,
+    direction: track.direction,
+    issuingAuthority: track.issuingAuthority,
+    notamNumber: track.notamNumber,
+    validFrom: track.validFrom,
+    validTo: track.validTo,
+    route: track.route.join(" "),
+    levels: [],
+    fixes,
+    unresolvedFixes,
+    remarks: track.remarks,
+    message: track.message,
+  };
 }

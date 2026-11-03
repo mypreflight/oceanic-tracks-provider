@@ -1,6 +1,6 @@
 import { createServer } from "node:http";
 import { main } from "../src/function";
-import { Logger } from "../src/logger";
+import { Logger } from "../src/shared/logger";
 
 const logger = new Logger("TracksDevServer");
 
