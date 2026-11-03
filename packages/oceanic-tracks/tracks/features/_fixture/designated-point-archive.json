@@ -1,0 +1,655 @@
+{
+  "features": [
+    {
+      "attributes": {
+        "IDENT_TXT": "AAMYY",
+        "LAT_TXT": "51-30-18.800N",
+        "LONG_TXT": "171-09-11.700E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "ADGOR",
+        "LAT_TXT": "40-25-28.880N",
+        "LONG_TXT": "149-39-2.560E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "ADNAP",
+        "LAT_TXT": "37-11-50.880N",
+        "LONG_TXT": "145-39-58.720E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "ADTIL",
+        "LAT_TXT": "34-58-42.000N",
+        "LONG_TXT": "134-42-14.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "AGEDI",
+        "LAT_TXT": "44-10-0.000N",
+        "LONG_TXT": "155-05-48.060E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "AKISU",
+        "LAT_TXT": "47-33-02.610N",
+        "LONG_TXT": "161-20-00.000E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "ALCOA",
+        "LAT_TXT": "37-49-59.710N",
+        "LONG_TXT": "125-50-04.290W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "ALDOZ",
+        "LAT_TXT": "55-11-34.900N",
+        "LONG_TXT": "178-32-13.100W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "ALLBE",
+        "LAT_TXT": "37-30-23.000N",
+        "LONG_TXT": "127-00-00.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "AMAKR",
+        "LAT_TXT": "39-00-00.000N",
+        "LONG_TXT": "123-45-00.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "AMOND",
+        "LAT_TXT": "54-13-37.500N",
+        "LONG_TXT": "178-18-09.500E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "AND",
+        "LAT_TXT": "13-42-51.000S",
+        "LONG_TXT": "073-22-40.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "AND",
+        "LAT_TXT": "30-15-24.000N",
+        "LONG_TXT": "121-13-18.000E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "AND",
+        "LAT_TXT": "69-17-16.180N",
+        "LONG_TXT": "016-08-28.970E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "ASPIN",
+        "LAT_TXT": "49-41-56.100N",
+        "LONG_TXT": "166-12-59.500E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "ATM",
+        "LAT_TXT": "03-14-57.730S",
+        "LONG_TXT": "052-14-51.520W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "AVBET",
+        "LAT_TXT": "36-08-32.350N",
+        "LONG_TXT": "145-28-0.000E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "BAART",
+        "LAT_TXT": "36-27-43.000N",
+        "LONG_TXT": "126-56-00.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "BARAZ",
+        "LAT_TXT": "34-01-23.000N",
+        "LONG_TXT": "134-20-46.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "BEGAD",
+        "LAT_TXT": "33-23-12.908N",
+        "LONG_TXT": "143-14-47.659E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "BGGLO",
+        "LAT_TXT": "38-13-28.520N",
+        "LONG_TXT": "122-46-03.020W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "BILLO",
+        "LAT_TXT": "31-10-42.000N",
+        "LONG_TXT": "141-17-24.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "BOARS",
+        "LAT_TXT": "38-13-37.530N",
+        "LONG_TXT": "123-07-37.260W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "BOOKE",
+        "LAT_TXT": "21-27-47.150N",
+        "LONG_TXT": "158-26-59.390W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "BOXER",
+        "LAT_TXT": "22-06-18.510S",
+        "LONG_TXT": "146-18-49.510E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "BOXER",
+        "LAT_TXT": "42-43-00.000N",
+        "LONG_TXT": "126-10-48.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "BRINY",
+        "LAT_TXT": "37-18-17.140N",
+        "LONG_TXT": "122-39-41.960W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "CJAYY",
+        "LAT_TXT": "57-27-50.880N",
+        "LONG_TXT": "150-31-51.400W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "CRESP",
+        "LAT_TXT": "22-12-20.000N",
+        "LONG_TXT": "163-54-52.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "DACEM",
+        "LAT_TXT": "38-27-59.000N",
+        "LONG_TXT": "127-00-00.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "DOLFF",
+        "LAT_TXT": "48-19-60.000N",
+        "LONG_TXT": "128-00-0.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "DOLFF",
+        "LAT_TXT": "48-20-00.000N",
+        "LONG_TXT": "128-00-00.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "EMRON",
+        "LAT_TXT": "38-06-21.650N",
+        "LONG_TXT": "150-00-0.000E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "ENI",
+        "LAT_TXT": "39-03-11.580N",
+        "LONG_TXT": "123-16-27.576W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "FASEL",
+        "LAT_TXT": "47-00-00.000N",
+        "LONG_TXT": "132-08-00.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "FINGS",
+        "LAT_TXT": "50-15-0.000N",
+        "LONG_TXT": "127-34-0.001W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "FULMR",
+        "LAT_TXT": "43-07-38.000N",
+        "LONG_TXT": "126-41-49.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "GNNRR",
+        "LAT_TXT": "37-40-29.080N",
+        "LONG_TXT": "122-30-12.180W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "GRIZZ",
+        "LAT_TXT": "57-06-53.810N",
+        "LONG_TXT": "148-30-07.150W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "HMPTN",
+        "LAT_TXT": "56-11-39.930N",
+        "LONG_TXT": "144-00-06.280W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "IGURU",
+        "LAT_TXT": "23-56-60.000N",
+        "LONG_TXT": "124-00-0.000E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "JAPAN",
+        "LAT_TXT": "36-21-52.890N",
+        "LONG_TXT": "092-28-37.920W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "KALNA",
+        "LAT_TXT": "39-09-13.810N",
+        "LONG_TXT": "149-49-31.810E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "KATCH",
+        "LAT_TXT": "53-59-58.530N",
+        "LONG_TXT": "136-00-05.770W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "KEOLA",
+        "LAT_TXT": "21-17-53.240N",
+        "LONG_TXT": "158-29-25.890W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "LEPKI",
+        "LAT_TXT": "37-00-0.000N",
+        "LONG_TXT": "150-00-0.000E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "LIBBO",
+        "LAT_TXT": "36-00-00.000N",
+        "LONG_TXT": "121-50-00.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "LYYLE",
+        "LAT_TXT": "50-30-54.800N",
+        "LONG_TXT": "175-56-43.200E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "MCKEY",
+        "LAT_TXT": "35-28-59.140N",
+        "LONG_TXT": "121-04-59.300W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "MOLKA",
+        "LAT_TXT": "26-39-31.000N",
+        "LONG_TXT": "124-00-0.000E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "MORAY",
+        "LAT_TXT": "34-17-48.850N",
+        "LONG_TXT": "145-59-46.750E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "MORAY",
+        "LAT_TXT": "38-57-17.330N",
+        "LONG_TXT": "094-22-35.180W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "NANAC",
+        "LAT_TXT": "38-54-22.700N",
+        "LONG_TXT": "143-13-40.770E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "NANAC",
+        "LAT_TXT": "38-54-22.710N",
+        "LONG_TXT": "143-13-40.770E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "NANDY",
+        "LAT_TXT": "30-47-13.560S",
+        "LONG_TXT": "149-07-40.750E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "NANDY",
+        "LAT_TXT": "56-49-58.400N",
+        "LONG_TXT": "177-20-53.400E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "NAR",
+        "LAT_TXT": "34-42-7.000S",
+        "LONG_TXT": "146-31-1.000E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "NATES",
+        "LAT_TXT": "54-55-39.700N",
+        "LONG_TXT": "171-58-48.600E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "NIKLL",
+        "LAT_TXT": "53-44-47.100N",
+        "LONG_TXT": "169-13-54.500E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "NIPPI",
+        "LAT_TXT": "49-42-38.400N",
+        "LONG_TXT": "159-20-48.300E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "NRKEY",
+        "LAT_TXT": "50-12-25.000N",
+        "LONG_TXT": "160-22-39.000E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "NULUK",
+        "LAT_TXT": "58-22-55.300N",
+        "LONG_TXT": "177-06-08.600W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "NUZAN",
+        "LAT_TXT": "51-39-27.500N",
+        "LONG_TXT": "163-38-41.800E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "NYMPH",
+        "LAT_TXT": "53-24-31.600N",
+        "LONG_TXT": "168-14-23.400E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "OAK",
+        "LAT_TXT": "37-43-33.322N",
+        "LONG_TXT": "122-13-24.909W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "OGGOE",
+        "LAT_TXT": "58-17-08.000N",
+        "LONG_TXT": "173-34-58.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "OSI",
+        "LAT_TXT": "37-23-32.998N",
+        "LONG_TXT": "122-16-52.678W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "PAINT",
+        "LAT_TXT": "38-00-00.000N",
+        "LONG_TXT": "125-30-00.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "PIRAT",
+        "LAT_TXT": "37-15-27.540N",
+        "LONG_TXT": "122-51-48.070W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "PRETY",
+        "LAT_TXT": "49-00-00.000N",
+        "LONG_TXT": "132-26-36.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "PUPPI",
+        "LAT_TXT": "21-55-16.980N",
+        "LONG_TXT": "161-40-46.680W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "REDWD",
+        "LAT_TXT": "40-00-00.000N",
+        "LONG_TXT": "126-30-00.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "ROUKE",
+        "LAT_TXT": "48-00-00.000N",
+        "LONG_TXT": "131-32-01.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "ROUTE",
+        "LAT_TXT": "35-24-44.000N",
+        "LONG_TXT": "101-37-50.190W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "SEDKU",
+        "LAT_TXT": "24-55-60.000N",
+        "LONG_TXT": "124-00-0.000E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "STINS",
+        "LAT_TXT": "37-49-25.240N",
+        "LONG_TXT": "122-45-24.060W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "SYA",
+        "LAT_TXT": "52-43-05.780N",
+        "LONG_TXT": "174-03-43.460E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "SYA",
+        "LAT_TXT": "52-43-19.190N",
+        "LONG_TXT": "174-03-37.030E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "TEL",
+        "LAT_TXT": "38-00-50.993N",
+        "LONG_TXT": "086-41-24.728W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "THOMA",
+        "LAT_TXT": "23-56-36.420N",
+        "LONG_TXT": "160-45-48.600W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "TO",
+        "LAT_TXT": "31-49-50.857N",
+        "LONG_TXT": "086-06-22.442W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "TO",
+        "LAT_TXT": "39-07-13.316N",
+        "LONG_TXT": "095-41-13.501W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "TO",
+        "LAT_TXT": "63-26-23.200N",
+        "LONG_TXT": "010-40-48.500E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "TONIK",
+        "LAT_TXT": "09-17-36.120N",
+        "LONG_TXT": "101-59-6.780E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "TONIK",
+        "LAT_TXT": "32-00-13.702N",
+        "LONG_TXT": "145-59-47.090E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "TOU",
+        "LAT_TXT": "43-40-51.000N",
+        "LONG_TXT": "001-18-35.300E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "TOU",
+        "LAT_TXT": "48-17-59.637N",
+        "LONG_TXT": "124-37-37.356W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "TRK",
+        "LAT_TXT": "03-19-32.180N",
+        "LONG_TXT": "117-33-41.880E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "TRYSH",
+        "LAT_TXT": "40-09-05.000N",
+        "LONG_TXT": "127-00-00.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "TUNTO",
+        "LAT_TXT": "23-00-15.739N",
+        "LONG_TXT": "129-04-52.759E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "UQQ",
+        "LAT_TXT": "49-42-44.280N",
+        "LONG_TXT": "124-53-38.979W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "UQQ",
+        "LAT_TXT": "49-42-45.000N",
+        "LONG_TXT": "124-53-40.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "VESPA",
+        "LAT_TXT": "40-37-31.000N",
+        "LONG_TXT": "127-00-00.000W"
+      }
+    }
+  ]
+}

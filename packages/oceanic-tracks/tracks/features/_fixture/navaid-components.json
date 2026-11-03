@@ -1,0 +1,53 @@
+{
+  "features": [
+    {
+      "attributes": {
+        "IDENT": "ENI",
+        "LATITUDE": "39-03-11.580N",
+        "LONGITUDE": "123-16-27.576W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "OAK",
+        "LATITUDE": "37-43-33.332N",
+        "LONGITUDE": "122-13-24.931W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "OSI",
+        "LATITUDE": "37-23-33.000N",
+        "LONGITUDE": "122-16-52.690W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "SYA",
+        "LATITUDE": "52-43-05.780N",
+        "LONGITUDE": "174-03-43.500E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "TO",
+        "LATITUDE": "39-07-13.316N",
+        "LONGITUDE": "095-41-13.501W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "TOU",
+        "LATITUDE": "48-17-59.637N",
+        "LONGITUDE": "124-37-37.356W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "UQQ",
+        "LATITUDE": "49-42-44.500N",
+        "LONGITUDE": "124-53-40.250W"
+      }
+    }
+  ]
+}

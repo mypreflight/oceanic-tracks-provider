@@ -1,0 +1,121 @@
+{
+  "status": "Success",
+  "data": {
+    "geojson": [
+      {
+        "type": "Feature",
+        "properties": {
+          "coreNOTAMData": {
+            "notam": {
+              "id": "NMS_ID_1793668760990975",
+              "number": "A5310/26",
+              "type": "N",
+              "issued": "2026-11-03T01:18:00Z",
+              "location": "ZAK",
+              "icaoLocation": "KZAK",
+              "effectiveStart": "2026-11-03T19:00:00Z",
+              "effectiveEnd": "2026-11-04T08:00:00Z",
+              "text": "(TDM TRK E 261103190001 2611031900 2611040800 BOXER FULMR FASEL 52N140W 55N150W 56N160W 56N170W ALDOZ AMOND SYA AAMYY ASPIN AKISU AGEDI ADGOR RTS/KSFO GNNRR STINS AMAKR BOXER KLAX MCKEY LIBBO BRINY BOARS BOXER ADGOR R591 ADNAP RMK/0)",
+              "classification": "INTL"
+            }
+          }
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "coreNOTAMData": {
+            "notam": {
+              "id": "NMS_ID_1793668761169172",
+              "number": "A5311/26",
+              "type": "N",
+              "issued": "2026-11-03T01:18:00Z",
+              "location": "ZAK",
+              "icaoLocation": "KZAK",
+              "effectiveStart": "2026-11-03T19:00:00Z",
+              "effectiveEnd": "2026-11-04T08:00:00Z",
+              "text": "(TDM TRK F 261103190001 2611031900 2611040800 ALCOA ALLBE ADTIL 35N140W 33N150W 31N160W 30N170W 30N180E 30N170E 31N160E 33N150E MORAY RTS/KSFO GNNRR ALCOA KLAX MCKEY LIBBO BRINY ALCOA MORAY OTR15 POVAL RMK/0)",
+              "classification": "INTL"
+            }
+          }
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "coreNOTAMData": {
+            "notam": {
+              "id": "NMS_ID_1793668761157744",
+              "number": "A5312/26",
+              "type": "N",
+              "issued": "2026-11-03T01:18:00Z",
+              "location": "ZAK",
+              "icaoLocation": "KZAK",
+              "effectiveStart": "2026-11-03T19:00:00Z",
+              "effectiveEnd": "2026-11-04T08:00:00Z",
+              "text": "(TDM TRK H 261103190001 2611031900 2611040800 BAART BARAZ BILLO 30N150W 29N160W 28N170W 27N180E 26N170E 25N160E 24N150E 23N140E TUNTO RTS/KSFO GNNRR BAART KLAX MCKEY LIBBO BRINY BAART TUNTO R595 SEDKU RCTP TUNTO IGURU VHHH RMK/TRK H ONLY AVAILABLE TO ACFT LANDING RCTP OR SOUTH )",
+              "classification": "INTL"
+            }
+          }
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "coreNOTAMData": {
+            "notam": {
+              "id": "NMS_ID_1793668761158381",
+              "number": "A5313/26",
+              "type": "N",
+              "issued": "2026-11-03T01:18:00Z",
+              "location": "ZAK",
+              "icaoLocation": "KZAK",
+              "effectiveStart": "2026-11-03T19:00:00Z",
+              "effectiveEnd": "2026-11-04T08:00:00Z",
+              "text": "(TDM TRK A 261103190001 2611031900 2611040800 PUPPI CRESP 23N170W 25N180E 27N170E 28N160E 31N150E TONIK RTS/PHNL KEOLA PUPPI TONIK G223 BEGAD RMK/TRK B NOT AVAILABLE )",
+              "classification": "INTL"
+            }
+          }
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "coreNOTAMData": {
+            "notam": {
+              "id": "NMS_ID_1793668761130471",
+              "number": "A5314/26",
+              "type": "N",
+              "issued": "2026-11-03T01:18:00Z",
+              "location": "ZAK",
+              "icaoLocation": "KZAK",
+              "effectiveStart": "2026-11-03T19:00:00Z",
+              "effectiveEnd": "2026-11-04T08:00:00Z",
+              "text": "(TDM TRK C 261103190001 2611031900 2611040800 KATCH HMPTN GRIZZ CJAYY 58N160W 58N170W ECOMI NATES NIKLL NYMPH NUZAN NRKEY NIPPI RTS/CYVR UQQ KATCH KSEA TOU FINGS KATCH KPDX TOU FINGS KATCH KSFO TOU FINGS KATCH KLAX TOU FINGS KATCH NIPPI R220 NANAC RMK/0)",
+              "classification": "INTL"
+            }
+          }
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "coreNOTAMData": {
+            "notam": {
+              "id": "NMS_ID_1793730953714274",
+              "number": "A5318/26",
+              "type": "N",
+              "issued": "2026-11-03T18:34:00Z",
+              "location": "ZAK",
+              "icaoLocation": "KZAK",
+              "effectiveStart": "2026-11-04T05:00:00Z",
+              "effectiveEnd": "2026-11-04T21:00:00Z",
+              "text": "(TDM TRK J 261104050001 2611040500 2611042100 REDWD VESPA 43N130W 51N140W 55N150W 57N160W OGGOE NULUK NANDY NATES NIKLL NYMPH NUZAN NIPPI RTS/KSFO GNNRR STINS AMAKR REDWD KLAX MCKEY LIBBO BRINY BOARS AMAKR REDWD NIPPI R220 NANAC RMK/0)",
+              "classification": "INTL"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
