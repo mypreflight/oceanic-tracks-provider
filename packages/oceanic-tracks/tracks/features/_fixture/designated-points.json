@@ -1,0 +1,417 @@
+{
+  "features": [
+    {
+      "attributes": {
+        "IDENT": "AAMYY",
+        "LATITUDE": "51-23-59.750N",
+        "LONGITUDE": "171-33-13.420E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "ADTIL",
+        "LATITUDE": "34-58-42.000N",
+        "LONGITUDE": "134-42-14.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "AKISU",
+        "LATITUDE": "47-33-02.610N",
+        "LONGITUDE": "161-20-00.000E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "ALCOA",
+        "LATITUDE": "37-49-59.710N",
+        "LONGITUDE": "125-50-04.290W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "ALDOZ",
+        "LATITUDE": "55-11-34.900N",
+        "LONGITUDE": "178-32-13.100W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "ALLBE",
+        "LATITUDE": "37-30-23.000N",
+        "LONGITUDE": "127-00-00.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "AMAKR",
+        "LATITUDE": "39-00-00.000N",
+        "LONGITUDE": "123-45-00.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "AMOND",
+        "LATITUDE": "54-13-37.500N",
+        "LONGITUDE": "178-18-09.500E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "ASPIN",
+        "LATITUDE": "49-39-19.099N",
+        "LONGITUDE": "166-15-13.545E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "BAART",
+        "LATITUDE": "36-27-43.000N",
+        "LONGITUDE": "126-56-00.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "BARAZ",
+        "LATITUDE": "34-01-23.000N",
+        "LONGITUDE": "134-20-46.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "BILLO",
+        "LATITUDE": "31-10-42.000N",
+        "LONGITUDE": "141-17-24.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "BOARS",
+        "LATITUDE": "38-13-37.530N",
+        "LONGITUDE": "123-07-37.260W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "BOOKE",
+        "LATITUDE": "21-27-47.150N",
+        "LONGITUDE": "158-26-59.390W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "BOXER",
+        "LATITUDE": "42-43-00.000N",
+        "LONGITUDE": "126-10-48.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "BRINY",
+        "LATITUDE": "37-18-17.140N",
+        "LONGITUDE": "122-39-41.960W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "BURGL",
+        "LATITUDE": "35-39-57.680N",
+        "LONGITUDE": "120-06-27.860W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "CJAYY",
+        "LATITUDE": "57-27-50.880N",
+        "LONGITUDE": "150-31-51.400W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "CRESP",
+        "LATITUDE": "22-12-20.000N",
+        "LONGITUDE": "163-54-52.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "DACEM",
+        "LATITUDE": "38-27-59.000N",
+        "LONGITUDE": "127-00-00.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "ECOMI",
+        "LATITUDE": "57-00-00.000N",
+        "LONGITUDE": "180-00-00.000E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "ENI",
+        "LATITUDE": "39-03-11.580N",
+        "LONGITUDE": "123-16-27.576W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "FASEL",
+        "LATITUDE": "47-00-00.000N",
+        "LONGITUDE": "132-08-00.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "FINGS",
+        "LATITUDE": "50-15-0.000N",
+        "LONGITUDE": "127-34-0.001W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "FULMR",
+        "LATITUDE": "43-07-38.000N",
+        "LONGITUDE": "126-41-49.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "GOVAD",
+        "LATITUDE": "49-02-48.650N",
+        "LONGITUDE": "125-42-15.090W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "GRIZZ",
+        "LATITUDE": "57-06-53.810N",
+        "LONGITUDE": "148-30-07.150W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "HMPTN",
+        "LATITUDE": "56-11-39.930N",
+        "LONGITUDE": "144-00-06.280W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "KATCH",
+        "LATITUDE": "53-59-58.530N",
+        "LONGITUDE": "136-00-05.770W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "KEOLA",
+        "LATITUDE": "21-17-53.240N",
+        "LONGITUDE": "158-29-25.890W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "LIBBO",
+        "LATITUDE": "36-00-00.000N",
+        "LONGITUDE": "121-50-00.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "LYYLE",
+        "LATITUDE": "50-30-54.800N",
+        "LONGITUDE": "175-56-43.200E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "MCKEY",
+        "LATITUDE": "35-28-59.140N",
+        "LONGITUDE": "121-04-59.300W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "NANDY",
+        "LATITUDE": "56-49-58.400N",
+        "LONGITUDE": "177-20-53.400E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "NATES",
+        "LATITUDE": "54-56-00.770N",
+        "LONGITUDE": "171-58-28.890E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "NIKLL",
+        "LATITUDE": "53-37-38.431N",
+        "LONGITUDE": "169-20-38.191E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "NIPPI",
+        "LATITUDE": "49-42-36.000N",
+        "LONGITUDE": "159-20-48.000E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "NRKEY",
+        "LATITUDE": "50-11-44.161N",
+        "LONGITUDE": "160-23-26.268E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "NULUK",
+        "LATITUDE": "58-22-55.300N",
+        "LONGITUDE": "177-06-08.600W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "NUZAN",
+        "LATITUDE": "51-36-25.951N",
+        "LONGITUDE": "163-42-08.471E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "NYMPH",
+        "LATITUDE": "53-18-12.510N",
+        "LONGITUDE": "168-20-46.240E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "OAK",
+        "LATITUDE": "37-43-33.332N",
+        "LONGITUDE": "122-13-24.931W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "OGGOE",
+        "LATITUDE": "58-16-24.730N",
+        "LONGITUDE": "173-34-23.607W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "OSI",
+        "LATITUDE": "37-23-33.000N",
+        "LONGITUDE": "122-16-52.690W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "PAINT",
+        "LATITUDE": "38-00-00.000N",
+        "LONGITUDE": "125-30-00.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "PIRAT",
+        "LATITUDE": "37-15-27.540N",
+        "LONGITUDE": "122-51-48.070W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "PRETY",
+        "LATITUDE": "49-00-00.000N",
+        "LONGITUDE": "132-26-36.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "PUPPI",
+        "LATITUDE": "21-55-16.980N",
+        "LONGITUDE": "161-40-46.680W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "REDWD",
+        "LATITUDE": "40-00-00.000N",
+        "LONGITUDE": "126-30-00.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "ROUKE",
+        "LATITUDE": "48-00-00.000N",
+        "LONGITUDE": "131-32-01.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "ROUTE",
+        "LATITUDE": "35-24-22.480N",
+        "LONGITUDE": "101-37-35.950W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "STINS",
+        "LATITUDE": "37-49-25.240N",
+        "LONGITUDE": "122-45-24.060W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "SYA",
+        "LATITUDE": "52-43-05.780N",
+        "LONGITUDE": "174-03-43.500E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "THOMA",
+        "LATITUDE": "23-56-36.420N",
+        "LONGITUDE": "160-45-48.600W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "TO",
+        "LATITUDE": "39-07-13.316N",
+        "LONGITUDE": "095-41-13.501W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "TOU",
+        "LATITUDE": "48-17-59.637N",
+        "LONGITUDE": "124-37-37.356W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "TRYSH",
+        "LATITUDE": "40-09-05.000N",
+        "LONGITUDE": "127-00-00.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "UQQ",
+        "LATITUDE": "49-42-44.500N",
+        "LONGITUDE": "124-53-40.250W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "VESPA",
+        "LATITUDE": "40-37-31.000N",
+        "LONGITUDE": "127-00-00.000W"
+      }
+    }
+  ]
+}
