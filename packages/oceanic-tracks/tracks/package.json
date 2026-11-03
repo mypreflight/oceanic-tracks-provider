@@ -15,8 +15,8 @@
     "test:functional": "TS_NODE_PROJECT=tsconfig.tests.json cucumber-js --require-module ts-node/register/transpile-only --require 'features/_context/**/*.ts' --fail-fast"
   },
   "dependencies": {
-    "@types/node": "^24.0.0",
-    "typescript": "^5.7.2"
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.0",
