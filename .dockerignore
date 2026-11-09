@@ -1,5 +1,6 @@
 **/node_modules
 packages/**/lib
+packages/**/dist
 
 .git
 .gitignore
@@ -16,3 +17,7 @@ test-data
 Dockerfile
 .dockerignore
 compose.yaml
+
+infra
+dist.zip
+lambda-out
