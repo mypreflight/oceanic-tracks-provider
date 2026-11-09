@@ -6,3 +6,13 @@ FROM alpine-node-base AS development
 WORKDIR /app
 COPY --chown=node:node . .
 ENTRYPOINT ["/app/docker/dev/entrypoint"]
+
+FROM alpine-node-base AS build
+WORKDIR /app/packages/oceanic-tracks/tracks
+COPY packages/oceanic-tracks/tracks/package*.json ./
+RUN npm ci --no-audit --no-fund
+COPY packages/oceanic-tracks/tracks ./
+RUN npm run bundle
+
+FROM scratch AS export
+COPY --from=build /app/packages/oceanic-tracks/tracks/dist/lambda.js ./

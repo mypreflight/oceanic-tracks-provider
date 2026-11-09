@@ -18,5 +18,6 @@ Dockerfile
 .dockerignore
 compose.yaml
 
-# Infrastructure as code
 infra
+dist.zip
+lambda-out
