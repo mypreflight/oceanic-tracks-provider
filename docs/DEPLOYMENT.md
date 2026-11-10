@@ -1,49 +1,41 @@
 # Deployment
 
-The function is a functions component of the `mypreflight` App Platform app, built from this repository. App Platform reads `project.yml`, so there is no image to publish.
+The function runs on AWS Lambda (`nodejs24.x`, arm64) behind a Function URL. The OpenTofu stack in `infra/` owns all of it: the function, its role, its log group, the Function URL, the function secret and the SSM parameters the API reads. Its state is `oceanic-tracks-provider/terraform.tfstate` in the `mypreflight-infra` bucket, encrypted with the `alias/mypreflight-state-key` KMS key.
 
-## First deployment
+## How a change ships
 
-1. Generate the shared secret the API will send:
+1. `./zip.sh` builds the `export` stage of the `Dockerfile` and zips the one bundled file, `lambda.js`, into `dist.zip`.
+2. On a pull request, `integrity` builds the zip and plans `infra/` with `dflook/tofu-plan`, through the plan role. The FAA credentials are placeholders there, so a plan never sees them.
+3. On a merge to `main`, `release` tags the version and applies `infra/` with `dflook/tofu-apply` in the `production` environment, which uploads the new `dist.zip`.
 
-   ```shell
-   openssl rand -hex 32
-   ```
+## Configuration
 
-2. Merge `.do/app.component.yaml` into the app spec. Put its ingress rule ahead of the catch-all `/` rules already there, because App Platform matches rules in order.
+| Variable | Comes from | Notes |
+| --- | --- | --- |
+| `OCEANIC_TRACKS_FUNCTION_SECRET` | `random_password` in `infra/lambda.tf` | Also published at SSM `/mypreflight/oceanic-tracks-provider/secret` for the API. |
+| `NMS_CLIENT_ID`, `NMS_CLIENT_SECRET` | The `production` environment secrets of this repository | Written to SSM `/mypreflight/oceanic-tracks-provider/nms-client-id` and `nms-client-secret` as write-only values, then read back into the function's environment. |
+| `NMS_API_HOST` | `nms_api_host` in `infra/variables.tf` | `https://api-staging.cgifederal-aim.com` for a pre-production key, `https://api-nms.aim.faa.gov` for a production key. |
 
-   ```shell
-   doctl apps spec get <app-id> > app.yaml
-   # merge the functions and ingress blocks from .do/app.component.yaml
-   doctl apps update <app-id> --spec app.yaml
-   ```
+The Function URL is published at SSM `/mypreflight/oceanic-tracks-provider/url`. The API's stack reads it and the secret into `OCEANIC_TRACKS_FUNCTION_BASE_URL` and `OCEANIC_TRACKS_FUNCTION_SECRET`.
 
-3. Set the component's environment in the App Platform console, all at run time:
+A write-only value is only written again when its version changes. To push new FAA credentials, update the two environment secrets and raise `nms_credentials_version` in `infra/variables.tf`.
 
-   | Variable | Value | Encrypted |
-   | --- | --- | --- |
-   | `OCEANIC_TRACKS_FUNCTION_SECRET` | The secret from step 1 | Yes |
-   | `NMS_CLIENT_ID` | The KEY from the FAA's credentials spreadsheet | Yes |
-   | `NMS_CLIENT_SECRET` | The SECRET from the same spreadsheet | Yes |
-   | `NMS_API_HOST` | `https://api-staging.cgifederal-aim.com` for a pre-production key, `https://api-nms.aim.faa.gov` for a production key | No |
+## Checking the function
 
-   Leaving `NMS_API_HOST` empty means production.
+```shell
+URL=$(aws ssm get-parameter --name /mypreflight/oceanic-tracks-provider/url --query Parameter.Value --output text)
+SECRET=$(aws ssm get-parameter --name /mypreflight/oceanic-tracks-provider/secret --with-decryption \
+  --query Parameter.Value --output text)
 
-4. Give the API component the matching pair:
+curl -H "Authorization: Bearer $SECRET" "$URL/tracks"
+```
 
-   | Variable | Value |
-   | --- | --- |
-   | `OCEANIC_TRACKS_FUNCTION_BASE_URL` | `https://<app-host>/oceanic-tracks/oceanic-tracks` |
-   | `OCEANIC_TRACKS_FUNCTION_SECRET` | The secret from step 1 |
+A `401` with `UNAUTHORIZED` means the token does not match the secret. A `502` with `NMS_UNAVAILABLE` means the FAA refused the key or the host does not match it. The function log names the status the FAA answered:
 
-5. Check the function answers:
-
-   ```shell
-   curl -H "X-Require-Whisk-Auth: $SECRET" "https://<app-host>/oceanic-tracks/oceanic-tracks/tracks"
-   ```
-
-   A `502` with `NMS_UNAVAILABLE` means the FAA refused the key or the host does not match it. The function log names the status the FAA answered.
+```shell
+aws logs tail /aws/lambda/oceanic-tracks-provider --follow
+```
 
 ## Switching to a production key
 
-Replace `NMS_CLIENT_ID` and `NMS_CLIENT_SECRET`, and set `NMS_API_HOST` to `https://api-nms.aim.faa.gov` or empty it. A pre-production key is refused by production with `ClientId is Invalid`, and the other way round.
+Replace the `NMS_CLIENT_ID` and `NMS_CLIENT_SECRET` environment secrets, raise `nms_credentials_version`, and set `nms_api_host` to `https://api-nms.aim.faa.gov`. A pre-production key is refused by production with `ClientId is Invalid`, and the other way round.

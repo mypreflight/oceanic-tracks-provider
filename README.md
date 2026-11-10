@@ -3,7 +3,7 @@
 # oceanic-tracks-provider
 
 The oceanic tracks function of the [**MyPreflight**][homepage] platform. Reads today's Pacific tracks from the FAA,
-places every fix on the map, and serves them to the platform's backend as a component of its App Platform app.
+places every fix on the map, and serves them to the platform's backend from an AWS Lambda Function URL.
 
 </div>
 
@@ -41,7 +41,7 @@ The backend lives in [flight-tracker-api][repo-api] and the web app in [flight-t
 [![Cucumber][cucumber-badge]][cucumber-url]
 [![Docker][docker-badge]][docker-url]
 
-No runtime dependencies: the function is the standard library plus compiled TypeScript.
+No runtime dependencies: the function is the standard library plus TypeScript, bundled into one file.
 
 ## Getting started
 
@@ -71,20 +71,25 @@ This app uses docker-based virtualization to run. To set up the project, follow 
    Packages are installed automatically and the function starts in watch mode.
 
 4. `docker compose` also starts `upstream-mock`, which answers for the FAA NOTAM service and the FAA fix directory
-   with a recorded day of tracks, so nothing touches the FAA:
+   with a recorded day of tracks, so nothing touches the FAA. The local server wraps the Lambda entry point, so it
+   wants the function secret from your `.env` too:
 
    ```shell
-   curl "http://localhost:3020/"
+   curl -H "Authorization: Bearer $OCEANIC_TRACKS_FUNCTION_SECRET" "http://localhost:3020/tracks"
    ```
 
 ### API documentation
 
-The contract is `openapi.json` in the repository root: `GET /oceanic-tracks/tracks`, requiring the
-`X-Require-Whisk-Auth` header. `flight-tracker-api` vendors it and mirrors it in hand-written types.
+The contract is `openapi.json` in the repository root: `GET /tracks`, requiring the function secret as
+`Authorization: Bearer <secret>`. `flight-tracker-api` vendors it and mirrors it in hand-written types. The Function
+URL and the secret are published in SSM:
 
 ```shell
-curl -H "X-Require-Whisk-Auth: $SECRET" \
-  "https://<app-host>/oceanic-tracks/oceanic-tracks/tracks"
+URL=$(aws ssm get-parameter --name /mypreflight/oceanic-tracks-provider/url --query Parameter.Value --output text)
+SECRET=$(aws ssm get-parameter --name /mypreflight/oceanic-tracks-provider/secret --with-decryption \
+  --query Parameter.Value --output text)
+
+curl -H "Authorization: Bearer $SECRET" "$URL/tracks"
 ```
 
 The function takes no arguments and answers with every track currently published:
@@ -113,14 +118,13 @@ The function takes no arguments and answers with every track currently published
 }
 ```
 
-Errors answer `{ "error": { "code", "message", "status" } }` with a matching status: `502` when the FAA NOTAM service
-or fix directory is unreachable or refuses the request, `500` when the FAA credentials are missing or anything else
-fails.
+Errors answer `{ "error": { "code", "message", "status" } }` with a matching status: `401` when the bearer token is
+missing or wrong, `404` on any path but `/tracks`, `502` when the FAA NOTAM service or fix directory is unreachable or
+refuses the request, `500` when the FAA credentials are missing or anything else fails.
 
 ### Code layout
 
-The function is split into three layers under `packages/oceanic-tracks/tracks/src`, with dependencies pointing inwards
-only:
+The function is split into three layers under `src`, with dependencies pointing inwards only:
 
 | Layer | Holds |
 | --- | --- |
@@ -128,8 +132,8 @@ only:
 | `application` | The list-current-tracks use case and its cache, the PACOTS issuers, the `TrackMessageSource` and `FixDirectory` ports, and its errors. |
 | `infra` | The FAA NOTAM service and fix directory clients implementing the ports, and the HTTP handler that turns errors into statuses and codes. |
 
-`shared` holds the logger and `function.ts` wires the layers together. `architecture.spec.ts` fails the unit tests when
-a layer imports one it shouldn't.
+`shared` holds the logger, and `lambda.ts` wires the layers together and answers the Function URL. `architecture.spec.ts`
+fails the unit tests when a layer imports one it shouldn't, or imports `lambda.ts`.
 
 ### Where the fix positions come from
 
@@ -151,21 +155,22 @@ is left out of `fixes` and named in `unresolvedFixes`.
 This project uses [semantic versioning](https://semver.org/spec/v2.0.0.html). Bump the version in every PR:
 
 ```shell
-npm version 1.1.0 --no-git-tag-version --prefix packages/oceanic-tracks/tracks
+docker compose exec app npm version 2.1.0 --no-git-tag-version
 ```
 
-`integrity` checks the version is new, and the release workflow tags it when `main` moves. App Platform rebuilds the
-component on the same push, from `project.yml`. First deployment needs the component adding to the app spec and its
-secrets setting — see the [deployment guide][docs-deployment].
+`integrity` checks the version is new and plans the infrastructure in `infra/`. When `main` moves, the release workflow
+tags the version and applies `infra/` with OpenTofu, which deploys the new bundle to AWS Lambda — see the
+[deployment guide][docs-deployment].
 
 Everything runs in Docker:
 
 ```shell
-docker compose exec tracks npm test
-docker compose exec tracks npm run test:functional
-docker compose exec tracks npm run typecheck
-docker compose exec tracks npm run lint
-docker compose exec tracks npm run build
+docker compose exec app npm test
+docker compose exec app npm run test:functional
+docker compose exec app npm run typecheck
+docker compose exec app npm run lint
+docker compose exec app npm run bundle
+./zip.sh
 ```
 
 ## Contact

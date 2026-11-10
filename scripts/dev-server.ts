@@ -1,5 +1,5 @@
 import { createServer } from "node:http";
-import { main } from "../src/function";
+import { handler } from "../src/lambda";
 import { Logger } from "../src/shared/logger";
 
 const logger = new Logger("TracksDevServer");
@@ -15,14 +15,22 @@ createServer((request, response) => {
     return;
   }
 
-  main()
+  const headers = Object.fromEntries(
+    Object.entries(request.headers).map(([name, value]) => [name, Array.isArray(value) ? value.join(",") : value]),
+  );
+
+  handler({
+    rawPath: url.pathname,
+    headers,
+    queryStringParameters: url.searchParams.size > 0 ? Object.fromEntries(url.searchParams) : undefined,
+    requestContext: { http: { method: request.method ?? "GET" } },
+  })
     .then((result) => {
-      const payload = JSON.stringify(result.body);
       response.writeHead(result.statusCode, {
-        "Content-Type": "application/json",
-        "Content-Length": Buffer.byteLength(payload),
+        ...result.headers,
+        "Content-Length": Buffer.byteLength(result.body),
       });
-      response.end(payload);
+      response.end(result.body);
     })
     .catch(() => {
       response.writeHead(500, { "Content-Type": "application/json" });

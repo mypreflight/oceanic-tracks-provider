@@ -4,8 +4,7 @@ node_modules/
 .env
 test-data
 
-packages/**/lib/
-packages/**/dist/
+/dist/
 
 # Infrastructure
 .terraform/
