@@ -1,11 +1,24 @@
 import { Then, When } from "@cucumber/cucumber";
 import expect from "expect";
 import type { OceanicTrack, TrackSet } from "../../src/domain/track";
-import { main } from "../../src/function";
+import { handler } from "../../src/lambda";
 import { deepCompare } from "../_helper/deep-compare";
 
 let statusCode: number;
+let headers: Record<string, string>;
 let body: unknown;
+
+async function invoke(authorization: string | undefined): Promise<void> {
+  const result = await handler({
+    rawPath: "/tracks",
+    headers: authorization === undefined ? {} : { authorization },
+    requestContext: { http: { method: "GET" } },
+  });
+
+  statusCode = result.statusCode;
+  headers = result.headers;
+  body = JSON.parse(result.body);
+}
 
 function trackSet(): TrackSet {
   return body as TrackSet;
@@ -26,14 +39,23 @@ function track(identifier: string): OceanicTrack {
 }
 
 When("I invoke the function", async () => {
-  const result = await main();
+  await invoke(`Bearer ${process.env.OCEANIC_TRACKS_FUNCTION_SECRET}`);
+});
 
-  statusCode = result.statusCode;
-  body = result.body;
+When("I invoke the function without the function secret", async () => {
+  await invoke(undefined);
+});
+
+When("I invoke the function with the token {string}", async (token: string) => {
+  await invoke(`Bearer ${token}`);
 });
 
 Then("the response status should be {int}", (expected: number) => {
   expect(statusCode).toBe(expected);
+});
+
+Then("the response header {string} should be {string}", (name: string, expected: string) => {
+  expect(headers[name]).toBe(expected);
 });
 
 Then("the response body should contain:", (docString: string) => {

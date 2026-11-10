@@ -1,14 +1,13 @@
 services:
-  tracks:
+  app:
     build:
       context: .
       target: development
-    working_dir: /app/packages/oceanic-tracks/tracks
+    working_dir: /app
     env_file:
       - .env
     volumes:
       - .:/app
-      - ./node_modules:/app/packages/oceanic-tracks/tracks/node_modules
     ports:
       - '3020:3000'
     healthcheck:

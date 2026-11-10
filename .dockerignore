@@ -1,6 +1,5 @@
 **/node_modules
-packages/**/lib
-packages/**/dist
+dist
 
 .git
 .gitignore

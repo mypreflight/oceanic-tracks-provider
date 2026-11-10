@@ -4,8 +4,10 @@ import { dirname, join, relative, resolve } from "node:path";
 const SOURCE = __dirname;
 
 const FORBIDDEN: Record<string, string[]> = {
-  domain: ["application", "infra", "shared"],
-  application: ["infra"],
+  domain: ["application", "infra", "shared", "lambda"],
+  application: ["infra", "lambda"],
+  infra: ["lambda"],
+  shared: ["domain", "application", "infra", "lambda"],
 };
 
 function sourceFiles(directory: string): string[] {

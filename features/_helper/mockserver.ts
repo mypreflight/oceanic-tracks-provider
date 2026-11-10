@@ -65,7 +65,7 @@ export async function callsTo(filter: RequestFilter): Promise<number> {
 }
 
 export async function restoreFixtures(): Promise<void> {
-  const file = join(__dirname, "..", "..", "..", "..", "..", "docker", "mock", "upstream.json");
+  const file = join(__dirname, "..", "..", "docker", "mock", "upstream.json");
   const expectations = JSON.parse(readFileSync(file, "utf-8")) as unknown[];
 
   await reset();
