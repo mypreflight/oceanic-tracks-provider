@@ -5,6 +5,10 @@ export const NOTAMS_PATH = "/nmsapi/v1/notams";
 
 export const TOKEN_PATH = "/v1/auth/token";
 
+export const NAT_FEED_PATH = "/datanat/nat.json";
+
+export const NAT_FEED_FIXTURE = "nat.json";
+
 export const LAYERS = {
   "designated points": { path: "/arcgis/DesignatedPoints/FeatureServer/0/query", fixture: "designated-points.json" },
   navaids: { path: "/arcgis/NavaidComponents/FeatureServer/0/query", fixture: "navaid-components.json" },
@@ -59,6 +63,18 @@ export function notamsResponse(notams: { number: string; text: string; type?: st
       })),
     },
   };
+}
+
+export function natFeedResponse(messages: { number: string; text: string }[]): unknown {
+  return messages.map((message) => ({
+    notam_number_formatted: message.number,
+    icao_id: message.number.slice(0, 4),
+    part_no: 1,
+    start_datetime: "2026-11-12T11:30:00Z",
+    end_datetime: "2026-11-12T19:00:00Z",
+    condition_message: message.text,
+    transaction_type: "NAT_TRACK",
+  }));
 }
 
 export const TOKEN = {

@@ -15,11 +15,20 @@ describe("parseLatLonPoint", () => {
     expect(parseLatLonPoint("10S170E")).toEqual({ latitude: -10, longitude: 170 });
   });
 
+  it("reads the North Atlantic form as north and west", () => {
+    expect(parseLatLonPoint("55/20")).toEqual({ latitude: 55, longitude: -20 });
+    expect(parseLatLonPoint("5430/20")).toEqual({ latitude: 54.5, longitude: -20 });
+    expect(parseLatLonPoint("42/60")).toEqual({ latitude: 42, longitude: -60 });
+  });
+
   it("refuses anything that is not a point", () => {
     expect(parseLatLonPoint("BOXER")).toBeNull();
     expect(parseLatLonPoint("95N140W")).toBeNull();
     expect(parseLatLonPoint("52N190W")).toBeNull();
     expect(parseLatLonPoint("5275N14000W")).toBeNull();
+    expect(parseLatLonPoint("5475/20")).toBeNull();
+    expect(parseLatLonPoint("55/190")).toBeNull();
+    expect(parseLatLonPoint("N285B")).toBeNull();
   });
 });
 

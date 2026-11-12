@@ -1,4 +1,4 @@
-export type TrackSystem = "pacots";
+export type TrackSystem = "pacots" | "nat";
 
 export type TrackDirection = "east" | "west";
 
@@ -20,11 +20,17 @@ export type ParsedTrack = {
 export type PublishedTrack = ParsedTrack & {
   system: TrackSystem;
   direction: TrackDirection;
+  levels: number[];
   issuingAuthority: string;
   notamNumber: string;
   validFrom: string;
   validTo: string;
   message: string;
+};
+
+export type PublishedTracks = {
+  tracks: PublishedTrack[];
+  unreadableMessages: string[];
 };
 
 export type OceanicTrack = {

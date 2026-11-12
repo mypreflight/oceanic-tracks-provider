@@ -1,8 +1,8 @@
 {
   "name": "oceanic-tracks-provider",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
-  "description": "Pacific oceanic tracks from the FAA NOTAM service, served from an AWS Lambda Function URL",
+  "description": "Pacific and North Atlantic oceanic tracks from the FAA, served from an AWS Lambda Function URL",
   "author": "mypreflight",
   "license": "Unlicense",
   "scripts": {

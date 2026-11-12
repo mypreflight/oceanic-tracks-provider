@@ -12,9 +12,15 @@ describe("parseDms", () => {
     expect(parseDms("44-10-0.000N")).toBeCloseTo(44.1666667, 5);
   });
 
+  it("reads the archive's sixty seconds as the next minute", () => {
+    expect(parseDms("056-46-60.000W")).toBeCloseTo(-56.7833333, 5);
+    expect(parseDms("44-52-60.000N")).toBeCloseTo(44.8833333, 5);
+  });
+
   it("refuses malformed values", () => {
     expect(parseDms("")).toBeNull();
     expect(parseDms("21.92N")).toBeNull();
     expect(parseDms("91-00-00.000N")).toBeNull();
+    expect(parseDms("44-52-60.500N")).toBeNull();
   });
 });

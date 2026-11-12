@@ -9,6 +9,13 @@
     },
     {
       "attributes": {
+        "IDENT_TXT": "ADARA",
+        "LAT_TXT": "51-30-0.000N",
+        "LONG_TXT": "015-00-0.000W"
+      }
+    },
+    {
+      "attributes": {
         "IDENT_TXT": "ADGOR",
         "LAT_TXT": "40-25-28.880N",
         "LONG_TXT": "149-39-2.560E"
@@ -114,6 +121,13 @@
     },
     {
       "attributes": {
+        "IDENT_TXT": "ATSUR",
+        "LAT_TXT": "50-00-0.000N",
+        "LONG_TXT": "014-00-0.000W"
+      }
+    },
+    {
+      "attributes": {
         "IDENT_TXT": "AVBET",
         "LAT_TXT": "36-08-32.350N",
         "LONG_TXT": "145-28-0.000E"
@@ -135,9 +149,23 @@
     },
     {
       "attributes": {
+        "IDENT_TXT": "BEDRA",
+        "LAT_TXT": "49-00-0.000N",
+        "LONG_TXT": "015-00-0.000W"
+      }
+    },
+    {
+      "attributes": {
         "IDENT_TXT": "BEGAD",
         "LAT_TXT": "33-23-12.908N",
         "LONG_TXT": "143-14-47.659E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "BEXET",
+        "LAT_TXT": "54-00-0.000N",
+        "LONG_TXT": "014-00-0.000W"
       }
     },
     {
@@ -212,6 +240,20 @@
     },
     {
       "attributes": {
+        "IDENT_TXT": "DINIM",
+        "LAT_TXT": "51-00-0.000N",
+        "LONG_TXT": "015-00-0.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "DOGAL",
+        "LAT_TXT": "54-00-0.000N",
+        "LONG_TXT": "015-00-0.000W"
+      }
+    },
+    {
+      "attributes": {
         "IDENT_TXT": "DOLFF",
         "LAT_TXT": "48-19-60.000N",
         "LONG_TXT": "128-00-0.000W"
@@ -222,6 +264,20 @@
         "IDENT_TXT": "DOLFF",
         "LAT_TXT": "48-20-00.000N",
         "LONG_TXT": "128-00-00.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "DOVEY",
+        "LAT_TXT": "41-07-00.000N",
+        "LONG_TXT": "067-00-00.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "ELSOX",
+        "LAT_TXT": "51-00-0.000N",
+        "LONG_TXT": "014-00-0.000W"
       }
     },
     {
@@ -261,6 +317,13 @@
     },
     {
       "attributes": {
+        "IDENT_TXT": "GISTI",
+        "LAT_TXT": "53-00-0.000N",
+        "LONG_TXT": "014-00-0.000W"
+      }
+    },
+    {
+      "attributes": {
         "IDENT_TXT": "GNNRR",
         "LAT_TXT": "37-40-29.080N",
         "LONG_TXT": "122-30-12.180W"
@@ -292,6 +355,13 @@
         "IDENT_TXT": "JAPAN",
         "LAT_TXT": "36-21-52.890N",
         "LONG_TXT": "092-28-37.920W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "JOBOC",
+        "LAT_TXT": "40-07-00.000N",
+        "LONG_TXT": "067-00-00.000W"
       }
     },
     {
@@ -331,9 +401,30 @@
     },
     {
       "attributes": {
+        "IDENT_TXT": "LIMRI",
+        "LAT_TXT": "52-00-0.000N",
+        "LONG_TXT": "015-00-0.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "LOMSI",
+        "LAT_TXT": "53-06-0.000N",
+        "LONG_TXT": "056-46-60.000W"
+      }
+    },
+    {
+      "attributes": {
         "IDENT_TXT": "LYYLE",
         "LAT_TXT": "50-30-54.800N",
         "LONG_TXT": "175-56-43.200E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "MALOT",
+        "LAT_TXT": "53-00-0.000N",
+        "LONG_TXT": "015-00-0.000W"
       }
     },
     {
@@ -404,6 +495,34 @@
         "IDENT_TXT": "NATES",
         "LAT_TXT": "54-55-39.700N",
         "LONG_TXT": "171-58-48.600E"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "NEBIN",
+        "LAT_TXT": "53-30-0.000N",
+        "LONG_TXT": "015-00-0.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "NEEKO",
+        "LAT_TXT": "29-59-35.960N",
+        "LONG_TXT": "095-10-09.290W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "NEEKO",
+        "LAT_TXT": "52-23-60.000N",
+        "LONG_TXT": "055-49-60.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "NICSO",
+        "LAT_TXT": "47-30-0.000N",
+        "LONG_TXT": "052-00-0.000W"
       }
     },
     {
@@ -485,6 +604,13 @@
     },
     {
       "attributes": {
+        "IDENT_TXT": "PORTI",
+        "LAT_TXT": "46-30-0.000N",
+        "LONG_TXT": "052-00-0.000W"
+      }
+    },
+    {
+      "attributes": {
         "IDENT_TXT": "PRETY",
         "LAT_TXT": "49-00-00.000N",
         "LONG_TXT": "132-26-36.000W"
@@ -499,9 +625,30 @@
     },
     {
       "attributes": {
+        "IDENT_TXT": "RAFIN",
+        "LAT_TXT": "44-52-60.000N",
+        "LONG_TXT": "051-48-17.000W"
+      }
+    },
+    {
+      "attributes": {
         "IDENT_TXT": "REDWD",
         "LAT_TXT": "40-00-00.000N",
         "LONG_TXT": "126-30-00.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "RIKAL",
+        "LAT_TXT": "51-47-60.000N",
+        "LONG_TXT": "054-31-60.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "RILED",
+        "LAT_TXT": "52-30-0.000N",
+        "LONG_TXT": "014-00-0.000W"
       }
     },
     {
@@ -527,9 +674,30 @@
     },
     {
       "attributes": {
+        "IDENT_TXT": "SOMAX",
+        "LAT_TXT": "50-00-0.000N",
+        "LONG_TXT": "015-00-0.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "SOORY",
+        "LAT_TXT": "38-30-00.000N",
+        "LONG_TXT": "060-16-03.300W"
+      }
+    },
+    {
+      "attributes": {
         "IDENT_TXT": "STINS",
         "LAT_TXT": "37-49-25.240N",
         "LONG_TXT": "122-45-24.060W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "SUPRY",
+        "LAT_TXT": "45-30-0.000N",
+        "LONG_TXT": "052-00-0.000W"
       }
     },
     {
@@ -583,6 +751,13 @@
     },
     {
       "attributes": {
+        "IDENT_TXT": "TOBOR",
+        "LAT_TXT": "52-30-0.000N",
+        "LONG_TXT": "015-00-0.000W"
+      }
+    },
+    {
+      "attributes": {
         "IDENT_TXT": "TONIK",
         "LAT_TXT": "09-17-36.120N",
         "LONG_TXT": "101-59-6.780E"
@@ -625,6 +800,13 @@
     },
     {
       "attributes": {
+        "IDENT_TXT": "TUDEP",
+        "LAT_TXT": "51-10-0.000N",
+        "LONG_TXT": "053-13-60.000W"
+      }
+    },
+    {
+      "attributes": {
         "IDENT_TXT": "TUNTO",
         "LAT_TXT": "23-00-15.739N",
         "LONG_TXT": "129-04-52.759E"
@@ -649,6 +831,13 @@
         "IDENT_TXT": "VESPA",
         "LAT_TXT": "40-37-31.000N",
         "LONG_TXT": "127-00-00.000W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT_TXT": "XETBO",
+        "LAT_TXT": "52-00-0.000N",
+        "LONG_TXT": "014-00-0.000W"
       }
     }
   ]

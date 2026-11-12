@@ -6,6 +6,7 @@ Feature: Listing the Pacific tracks
   Background:
     Given the NOTAM service issues tokens
     And the fix directory knows today's fixes
+    And the NAT feed publishes no tracks
 
   Scenario: Both directions are listed, westbound from Oakland and eastbound from Fukuoka
     Given Oakland publishes today's track messages

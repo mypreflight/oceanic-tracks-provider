@@ -15,7 +15,7 @@ export function parseDms(value: string): number | null {
   const magnitude = Number(degrees) + Number(minutes) / 60 + Number(seconds) / 3600;
   const limit = hemisphere === "N" || hemisphere === "S" ? 90 : 180;
 
-  if (magnitude > limit || Number(minutes) >= 60 || Number(seconds) >= 60) {
+  if (magnitude > limit || Number(minutes) >= 60 || Number(seconds) > 60) {
     return null;
   }
 
