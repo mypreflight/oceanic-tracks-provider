@@ -2,7 +2,7 @@
 
 # oceanic-tracks-provider
 
-The oceanic tracks function of the [**MyPreflight**][homepage] platform. Reads today's Pacific tracks from the FAA,
+The oceanic tracks function of the [**MyPreflight**][homepage] platform. Reads today's Pacific and North Atlantic tracks from the FAA,
 places every fix on the map, and serves them to the platform's backend from an AWS Lambda Function URL.
 
 </div>
@@ -17,15 +17,18 @@ experience, integrate with SimBrief and other tools. Check out our homepage at [
 
 - reads the Pacific Organized Track System (PACOTS) from the [FAA NOTAM Management Service][nms]: westbound tracks
   from Oakland Oceanic (KZAK) and eastbound tracks from Fukuoka (RJJJ),
-- reads both message formats, Oakland's one-line `TDM TRK` and Fukuoka's multi-track `FLEX ROUTE` blocks,
-- places every fix: points such as `52N140W` from their own text, named fixes and navaids from the FAA's published
+- reads the North Atlantic Organized Track System (NAT) from the FAA's public NAT track feed: the tracks Gander
+  (CZQX) and Shanwick (EGGX) publish, with the flight levels of each, and the Pacific tracks are still served when
+  that feed is down,
+- reads every message format, Oakland's one-line `TDM TRK`, Fukuoka's multi-track `FLEX ROUTE` blocks and the North
+  Atlantic track message sent in parts,
+- places every fix: points such as `52N140W` or `5430/20` from their own text, named fixes and navaids from the FAA's published
   aeronautical data, choosing the one nearest the track when a name exists in two places,
 - reports what it could not read or place instead of guessing,
 - keeps the FAA key and the FAA's rate limit in one place, away from the backend.
 
 It exists as a separate service so the NOTAM formats, the FAA credentials and the FAA's limit of one data pull every
-3 minutes stay behind one small contract. A failure here takes out the track layer, not the backend, and North
-Atlantic tracks can join later without the backend changing.
+3 minutes stay behind one small contract. A failure here takes out the track layer, not the backend.
 
 The backend lives in [flight-tracker-api][repo-api] and the web app in [flight-tracker-app][repo-app].
 
@@ -128,9 +131,9 @@ The function is split into three layers under `src`, with dependencies pointing 
 
 | Layer | Holds |
 | --- | --- |
-| `domain` | The track model, coordinates, the Oakland and Fukuoka message parsers, fix placement. No I/O. |
-| `application` | The list-current-tracks use case and its cache, the PACOTS issuers, the `TrackMessageSource` and `FixDirectory` ports, and its errors. |
-| `infra` | The FAA NOTAM service and fix directory clients implementing the ports, and the HTTP handler that turns errors into statuses and codes. |
+| `domain` | The track model, coordinates, the Oakland, Fukuoka and North Atlantic message parsers, fix placement. No I/O. |
+| `application` | The list-current-tracks use case and its cache, the PACOTS issuers, the North Atlantic message assembly, the `TrackMessageSource`, `NatMessageSource` and `FixDirectory` ports, and its errors. |
+| `infra` | The FAA NOTAM service, NAT feed and fix directory clients implementing the ports, and the HTTP handler that turns errors into statuses and codes. |
 
 `shared` holds the logger, and `lambda.ts` wires the layers together and answers the Function URL. `architecture.spec.ts`
 fails the unit tests when a layer imports one it shouldn't, or imports `lambda.ts`.

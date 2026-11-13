@@ -2,6 +2,8 @@ import type { Coordinates } from "./track";
 
 const LAT_LON_POINT = /^(\d{2})(\d{2})?([NS])(\d{3})(\d{2})?([EW])$/;
 
+const NAT_POINT = /^(\d{2})(\d{2})?\/(\d{2,3})$/;
+
 const NAMED_FIX = /^[A-Z]{2,5}$/;
 
 const AIRWAY = /^[A-Z]{1,3}\d{1,4}[A-Z]?$/;
@@ -18,11 +20,29 @@ function round(value: number): number {
   return Math.round(value * 1e6) / 1e6;
 }
 
+function parseNatPoint(token: string): Coordinates | null {
+  const match = NAT_POINT.exec(token);
+
+  if (!match) {
+    return null;
+  }
+
+  const [, latDegrees, latMinutes = "0", lonDegrees] = match;
+  const latitude = Number(latDegrees) + Number(latMinutes) / 60;
+  const longitude = -Number(lonDegrees);
+
+  if (latitude > 90 || longitude < -180 || Number(latMinutes) >= 60) {
+    return null;
+  }
+
+  return { latitude: round(latitude), longitude: round(longitude) };
+}
+
 export function parseLatLonPoint(token: string): Coordinates | null {
   const match = LAT_LON_POINT.exec(token);
 
   if (!match) {
-    return null;
+    return parseNatPoint(token);
   }
 
   const [, latDegrees, latMinutes = "0", north, lonDegrees, lonMinutes = "0", east] = match;

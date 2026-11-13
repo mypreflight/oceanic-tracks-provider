@@ -142,6 +142,13 @@
     },
     {
       "attributes": {
+        "IDENT": "DOVEY",
+        "LATITUDE": "41-07-00.000N",
+        "LONGITUDE": "067-00-00.000W"
+      }
+    },
+    {
+      "attributes": {
         "IDENT": "ECOMI",
         "LATITUDE": "57-00-00.000N",
         "LONGITUDE": "180-00-00.000E"
@@ -194,6 +201,13 @@
         "IDENT": "HMPTN",
         "LATITUDE": "56-11-39.930N",
         "LONGITUDE": "144-00-06.280W"
+      }
+    },
+    {
+      "attributes": {
+        "IDENT": "JOBOC",
+        "LATITUDE": "40-07-00.000N",
+        "LONGITUDE": "067-00-00.000W"
       }
     },
     {

@@ -96,7 +96,7 @@ export function placeTrack(track: PublishedTrack, candidates: FixCandidates): Oc
     validFrom: track.validFrom,
     validTo: track.validTo,
     route: track.route.join(" "),
-    levels: [],
+    levels: track.levels,
     fixes,
     unresolvedFixes,
     remarks: track.remarks,

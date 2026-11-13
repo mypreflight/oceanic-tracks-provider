@@ -8,7 +8,10 @@ import {
   type IssuerName,
   LAYERS,
   type LayerName,
+  NAT_FEED_FIXTURE,
+  NAT_FEED_PATH,
   NOTAMS_PATH,
+  natFeedResponse,
   notamsResponse,
   TOKEN,
   TOKEN_PATH,
@@ -48,6 +51,30 @@ async function stubIssuer(name: IssuerName, body: unknown, status = 200): Promis
     body,
   });
 }
+
+async function stubNatFeed(body: unknown, status = 200): Promise<void> {
+  await stub({ method: "GET", path: NAT_FEED_PATH, status, body });
+}
+
+Given("the NAT feed publishes today's tracks", async () => {
+  await stubNatFeed(fixture(NAT_FEED_FIXTURE));
+});
+
+Given("the NAT feed publishes no tracks", async () => {
+  await stubNatFeed([]);
+});
+
+Given("the NAT feed publishes the message {string}:", async (number: string, text: string) => {
+  await stubNatFeed(natFeedResponse([{ number, text }]));
+});
+
+Given("the NAT feed answers {int}", async (status: number) => {
+  await stubNatFeed("boom", status);
+});
+
+Then("the NAT feed should have been asked {int} time(s)", async (count: number) => {
+  expect(await callsTo({ method: "GET", path: NAT_FEED_PATH })).toBe(count);
+});
 
 Given("the NOTAM service issues tokens", async () => {
   await stub({ method: "POST", path: TOKEN_PATH, status: 200, body: TOKEN });

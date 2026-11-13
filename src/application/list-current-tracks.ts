@@ -1,6 +1,7 @@
 import { namedIdents, placeTrack } from "../domain/place-fixes";
-import { compareTracks, type TrackSet } from "../domain/track";
-import { Logger } from "../shared/logger";
+import { compareTracks, type PublishedTracks, type TrackSet } from "../domain/track";
+import { describeError, Logger } from "../shared/logger";
+import type { NatMessages } from "./nat-messages";
 import type { PacotsMessages } from "./pacots-messages";
 import type { FixDirectory } from "./port/fix-directory";
 
@@ -12,6 +13,7 @@ export class ListCurrentTracks {
 
   constructor(
     private readonly pacots: PacotsMessages,
+    private readonly nat: NatMessages,
     private readonly fixDirectory: FixDirectory,
   ) {}
 
@@ -22,12 +24,17 @@ export class ListCurrentTracks {
       return this.cached.value;
     }
 
-    const { tracks: published, unreadableMessages } = await this.pacots.load();
+    const [pacots, nat] = await Promise.all([this.pacots.load(), this.loadNat()]);
+    const published = [...pacots.tracks, ...(nat?.tracks ?? [])];
+    const unreadableMessages = [...pacots.unreadableMessages, ...(nat?.unreadableMessages ?? [])];
     const candidates = await this.fixDirectory.locate(published.flatMap((track) => namedIdents(track.route)));
     const tracks = published.map((track) => placeTrack(track, candidates)).sort(compareTracks);
 
     const value: TrackSet = { fetchedAt: new Date().toISOString(), tracks, unreadableMessages };
-    this.cached = { value, expiresAt: Date.now() + CACHE_TTL_MS };
+
+    if (nat !== null) {
+      this.cached = { value, expiresAt: Date.now() + CACHE_TTL_MS };
+    }
 
     const unresolved = tracks.reduce((count, track) => count + track.unresolvedFixes.length, 0);
     this.logger.log(
@@ -35,5 +42,15 @@ export class ListCurrentTracks {
     );
 
     return value;
+  }
+
+  private async loadNat(): Promise<PublishedTracks | null> {
+    try {
+      return await this.nat.load();
+    } catch (error) {
+      this.logger.warn(`Serving the Pacific tracks without the North Atlantic ones: ${describeError(error)}`);
+
+      return null;
+    }
   }
 }

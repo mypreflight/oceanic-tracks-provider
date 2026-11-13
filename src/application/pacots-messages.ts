@@ -1,6 +1,6 @@
 import { parseFukuokaMessage } from "../domain/message/fukuoka.parser";
 import { parseOaklandMessage } from "../domain/message/oakland.parser";
-import type { ParsedTrack, PublishedTrack, TrackDirection } from "../domain/track";
+import type { ParsedTrack, PublishedTrack, PublishedTracks, TrackDirection } from "../domain/track";
 import { Logger } from "../shared/logger";
 import type { TrackMessageSource } from "./port/track-message-source";
 
@@ -17,11 +17,6 @@ const ISSUERS: Issuer[] = [
   { location: "KZAK", keyword: "TDM TRK", direction: "west", parse: parseOaklandMessage },
   { location: "RJJJ", keyword: "PACOTS", direction: "east", parse: parseFukuokaMessage },
 ];
-
-export type PublishedTracks = {
-  tracks: PublishedTrack[];
-  unreadableMessages: string[];
-};
 
 function isoInstant(value: string): string | null {
   const instant = new Date(value);
@@ -64,6 +59,7 @@ export class PacotsMessages {
             ...track,
             system: "pacots",
             direction: issuer.direction,
+            levels: [],
             issuingAuthority: issuer.location,
             notamNumber: message.number,
             validFrom,

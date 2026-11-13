@@ -82,6 +82,7 @@ describe("placeTrack", () => {
       system: "pacots" as const,
       identifier: "A",
       direction: "west" as const,
+      levels: [],
       issuingAuthority: "KZAK",
       notamNumber: "A5313/26",
       validFrom: "2026-11-03T19:00:00.000Z",
@@ -108,6 +109,34 @@ describe("placeTrack", () => {
       unresolvedFixes: ["TONIK"],
       remarks: "TRK B NOT AVAILABLE",
       message: "(TDM TRK A ...)",
+    });
+  });
+
+  it("keeps a North Atlantic track's levels and places its points", () => {
+    const published = {
+      system: "nat" as const,
+      identifier: "B",
+      direction: "west" as const,
+      levels: [340, 350, 360],
+      issuingAuthority: "EGGX",
+      notamNumber: "EGGX1112/26",
+      validFrom: "2026-11-12T11:30:00.000Z",
+      validTo: "2026-11-12T19:00:00.000Z",
+      route: ["NEBIN", "5430/20", "5530/30", "MELDI"],
+      remarks: "1. TMI IS 316.",
+      message: "NAT-1/2 TRACKS ...",
+    };
+
+    expect(placeTrack(published, new Map([["NEBIN", [{ latitude: 53.5, longitude: -15 }]]]))).toMatchObject({
+      system: "nat",
+      levels: [340, 350, 360],
+      route: "NEBIN 5430/20 5530/30 MELDI",
+      fixes: [
+        { ident: "NEBIN", latitude: 53.5, longitude: -15 },
+        { ident: "5430/20", latitude: 54.5, longitude: -20 },
+        { ident: "5530/30", latitude: 55.5, longitude: -30 },
+      ],
+      unresolvedFixes: ["MELDI"],
     });
   });
 });

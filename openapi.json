@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "MyPreflight oceanic tracks provider",
-    "description": "An AWS Lambda function returning today's organised oceanic tracks, with every fix placed on the map. It currently serves the Pacific tracks (PACOTS) from the FAA NOTAM Management Service.\n\nServed from a Lambda Function URL. Every request must carry the function secret as `Authorization: Bearer <secret>`; the function answers 401 before doing anything else otherwise.",
-    "version": "2.0.0",
+    "description": "An AWS Lambda function returning today's organised oceanic tracks, with every fix placed on the map. It serves the Pacific tracks (PACOTS) from the FAA NOTAM Management Service and the North Atlantic tracks (NAT) from the FAA's public NAT track feed.\n\nServed from a Lambda Function URL. Every request must carry the function secret as `Authorization: Bearer <secret>`; the function answers 401 before doing anything else otherwise.",
+    "version": "2.1.0",
     "license": {
       "name": "Unlicense",
       "url": "https://opensource.org/licenses/Unlicense"
@@ -34,7 +34,7 @@
     "/tracks": {
       "get": {
         "summary": "List today's oceanic tracks",
-        "description": "Returns every track currently published, westbound PACOTS from Oakland (KZAK) and eastbound PACOTS from Fukuoka (RJJJ), each with its validity, route, the fixes placed on the map and the raw message.\n\nPoints written as latitude and longitude are placed from their own text. Named fixes and navaids are placed from the FAA's published aeronautical data; a name that exists in more than one place takes the one nearest its neighbours on the track, and a fix nobody can place is listed in `unresolvedFixes` rather than guessed.\n\nThe function takes no arguments. The assembled tracks are cached in the function instance for 5 minutes, and fix positions for 24 hours, which keeps the function well inside the FAA's limit of one data pull every 3 minutes.",
+        "description": "Returns every track currently published, westbound PACOTS from Oakland (KZAK), eastbound PACOTS from Fukuoka (RJJJ), and the North Atlantic tracks from Gander (CZQX, usually eastbound) and Shanwick (EGGX, usually westbound), each with its validity, route, the fixes placed on the map and the raw message.\n\nWhen the NAT feed is unavailable the Pacific tracks are still returned without the North Atlantic ones, and that answer is not cached.\n\nPoints written as latitude and longitude, such as `52N140W` or the North Atlantic `55/20` and `5430/20`, are placed from their own text. Named fixes and navaids are placed from the FAA's published aeronautical data; a name that exists in more than one place takes the one nearest its neighbours on the track, and a fix nobody can place is listed in `unresolvedFixes` rather than guessed.\n\nThe function takes no arguments. The assembled tracks are cached in the function instance for 5 minutes, and fix positions for 24 hours, which keeps the function well inside the FAA's limit of one data pull every 3 minutes.",
         "operationId": "listTracks",
         "responses": {
           "200": {
@@ -173,12 +173,12 @@
         "properties": {
           "system": {
             "type": "string",
-            "enum": ["pacots"],
+            "enum": ["pacots", "nat"],
             "description": "The organised track system the track belongs to."
           },
           "identifier": {
             "type": "string",
-            "description": "The track's published name: a letter for Oakland's westbound tracks, a number for Fukuoka's eastbound ones.",
+            "description": "The track's published name: a letter for Oakland's westbound tracks, a number for Fukuoka's eastbound ones, a letter for the North Atlantic tracks.",
             "examples": ["A", "11"]
           },
           "direction": {
@@ -188,11 +188,11 @@
           "issuingAuthority": {
             "type": "string",
             "description": "ICAO location of the unit that published the track.",
-            "enum": ["KZAK", "RJJJ"]
+            "enum": ["CZQX", "EGGX", "KZAK", "RJJJ"]
           },
           "notamNumber": {
             "type": "string",
-            "description": "The NOTAM carrying the track. A Fukuoka message carries several tracks, so they share it.",
+            "description": "The NOTAM carrying the track. A Fukuoka message and a North Atlantic message carry several tracks, so they share it.",
             "examples": ["A5313/26"]
           },
           "validFrom": {
@@ -212,11 +212,11 @@
           },
           "levels": {
             "type": "array",
-            "description": "Flight levels the track is published for. PACOTS messages publish none, so the list is empty.",
+            "description": "Flight levels the track is published for in its direction, such as 340 for FL340. PACOTS messages publish none, so the list is empty.",
             "items": {
               "type": "integer"
             },
-            "examples": [[]]
+            "examples": [[340, 350, 360, 370, 380, 390, 400], []]
           },
           "fixes": {
             "type": "array",
@@ -235,12 +235,12 @@
           },
           "remarks": {
             "type": ["string", "null"],
-            "description": "The track's remarks, one per line. Null when the message publishes none.",
+            "description": "The track's remarks, one per line. A North Atlantic message's remarks, its TMI among them, apply to every track in it. Null when the message publishes none.",
             "examples": ["TRK B NOT AVAILABLE"]
           },
           "message": {
             "type": "string",
-            "description": "The NOTAM text exactly as published, connecting routes included."
+            "description": "The NOTAM text exactly as published, connecting routes included. A North Atlantic message published in parts is joined in order, one line per line."
           }
         }
       },
@@ -250,7 +250,7 @@
         "properties": {
           "ident": {
             "type": "string",
-            "description": "The fix as written in the route: a name, or a point such as 52N140W.",
+            "description": "The fix as written in the route: a name, or a point such as 52N140W or 5430/20.",
             "examples": ["PUPPI", "23N170W"]
           },
           "latitude": {

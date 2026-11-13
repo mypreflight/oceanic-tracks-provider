@@ -22,3 +22,9 @@ export class TrackSourceNotConfiguredError extends ApplicationError {
     super("The track message source is not configured.");
   }
 }
+
+export class NatFeedUnavailableError extends ApplicationError {
+  constructor() {
+    super("The North Atlantic track feed is unavailable.");
+  }
+}
