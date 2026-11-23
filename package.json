@@ -1,6 +1,6 @@
 {
   "name": "oceanic-tracks-provider",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "private": true,
   "description": "Pacific and North Atlantic oceanic tracks from the FAA, served from an AWS Lambda Function URL",
   "author": "mypreflight",
